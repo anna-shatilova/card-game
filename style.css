@@ -1,9 +1,21 @@
-html {
+@font-face {
+    font-family: "StratosSkyeng";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./assets/fonts/stratosskyengweb-regular.woff") format("woff");
+  }
+
+body {
+    margin: 0;
+    padding: 0;
     background:  var(--blue-120, #004980);
+}
+
+.container {
     display: flex;
     justify-content: center;
     flex-direction: row;
-    padding-top: 158px;
 }
 
 .rec-blue {
@@ -15,16 +27,23 @@ html {
     flex-direction: column;
     justify-content: center; 
     align-items: center;
-    padding-top: 52px;
-    padding-bottom: 50px;
+    margin: 158px 272px;
+}
+
+.title {
+    text-align: center;
+    color: #004980;
+    font-size: 40px;
+    line-height: 48px;
 }
 
 .level {
     display: flex;
     gap: 26px;
-    margin-top: 48px;
-    margin-bottom: 67px;
+    /* margin-top: 48px;
+    margin-bottom: 67px; */
 }
+
 .level-number {
     width: 97px;
     height: 98px;
@@ -33,7 +52,10 @@ html {
     text-align: center;
     font-size: 64px;
     font-family: StratosSkyeng;
-    line-height: 72px; 
+    line-height: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .button {
@@ -47,4 +69,5 @@ html {
     font-family: StratosSkyeng;
     line-height: 32px;
     border-width: 0px;
+    margin-top: 67px;
 }
