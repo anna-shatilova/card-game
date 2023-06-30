@@ -10,12 +10,12 @@ body {
     margin: 0;
     padding: 0;
     background:  var(--blue-120, #004980);
+    font-family: "StratosSkyeng", sans-serif;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    flex-direction: row;
 }
 
 .rec-blue {
@@ -28,6 +28,8 @@ body {
     justify-content: center; 
     align-items: center;
     margin: 158px 272px;
+    padding-left: 70px;
+    padding-right: 70px;
 }
 
 .title {
@@ -40,18 +42,18 @@ body {
 .level {
     display: flex;
     gap: 26px;
-    /* margin-top: 48px;
-    margin-bottom: 67px; */
+    margin-top: 48px;
+    margin-bottom: 67px;
 }
 
 .level-number {
     width: 97px;
     height: 98px;
     background:#FFF;
+    border-radius: 12px;
     color: var(--blue-100, #0080C1);
     text-align: center;
     font-size: 64px;
-    font-family: StratosSkyeng;
     line-height: 72px;
     display: flex;
     flex-direction: column;
@@ -66,8 +68,6 @@ body {
     color: #FFF;
     text-align: center;
     font-size: 24px;
-    font-family: StratosSkyeng;
     line-height: 32px;
     border-width: 0px;
-    margin-top: 67px;
 }
