@@ -20,7 +20,7 @@ body {
     align-items: center;
 }
 
-.rec-blue {
+.info {
     width: 480px;
     height: 459px;
     border-radius: 12px;
@@ -39,16 +39,31 @@ body {
     color: #004980;
     font-size: 40px;
     line-height: 48px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 
-.level {
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-level {
     display: flex;
     gap: 26px;
     margin-top: 48px;
     margin-bottom: 67px;
 }
+input {
+    display: none;
+}
 
-.level-number {
+input[type=radio]:checked+label {
+    border:1px solid #000;
+}
+
+.form-level-choice {
     width: 97px;
     height: 98px;
     background:#FFF;
