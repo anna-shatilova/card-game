@@ -24,13 +24,13 @@ const renderApp = () => {
     formEl.addEventListener(
         "submit",
         (event) => {
-            if (formEl[0].checked = true) {
+            if (formEl[0].checked) {
                 appEl.innerHTML = `Страница игры с первым уровнем сложности`;
             }
-            if (formEl[1].checked = true) {
+            if (formEl[1].checked) {
                 appEl.innerHTML = `Страница игры со вторым уровнем сложности`;
             }
-            if (formEl[2].checked = true) {
+            if (formEl[2].checked) {
                 appEl.innerHTML = `Страница игры с третьим уровнем сложности`;
             }
             event.preventDefault();
