@@ -1,5 +1,5 @@
 const renderApp = () => {
-    const appEl = document.getElementById("app");
+    const appEl = document.getElementById('app')
     appEl.innerHTML = `
       <div class="container">
       <div class="info">
@@ -19,23 +19,20 @@ const renderApp = () => {
             </form>
   </div>
     `
-    const formEl = document.getElementById('form');
+    const formEl = document.getElementById('form')
 
-    formEl.addEventListener(
-        "submit",
-        (event) => {
-            if (formEl[0].checked) {
-                appEl.innerHTML = `Страница игры с первым уровнем сложности`;
-            }
-            if (formEl[1].checked) {
-                appEl.innerHTML = `Страница игры со вторым уровнем сложности`;
-            }
-            if (formEl[2].checked) {
-                appEl.innerHTML = `Страница игры с третьим уровнем сложности`;
-            }
-            event.preventDefault();
+    formEl.addEventListener('submit', (event) => {
+        if (formEl[0].checked) {
+            appEl.innerHTML = `Страница игры с первым уровнем сложности`
         }
-    )
+        if (formEl[1].checked) {
+            appEl.innerHTML = `Страница игры со вторым уровнем сложности`
+        }
+        if (formEl[2].checked) {
+            appEl.innerHTML = `Страница игры с третьим уровнем сложности`
+        }
+        event.preventDefault()
+    })
 }
 
 renderApp()
