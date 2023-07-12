@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'StratosSkyeng';
+    font-family: StratosSkyeng;
     font-style: normal;
     font-weight: 400;
     font-display: swap;
@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     background: var(--blue-120, #004980);
-    font-family: 'StratosSkyeng', sans-serif;
+    font-family: StratosSkyeng, sans-serif;
 }
 
 .container {
@@ -39,8 +39,8 @@ body {
     color: #004980;
     font-size: 40px;
     line-height: 48px;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
 
 .form {
@@ -55,6 +55,7 @@ body {
     margin-top: 48px;
     margin-bottom: 67px;
 }
+
 input {
     display: none;
 }
@@ -86,5 +87,5 @@ input[type='radio']:checked + label {
     text-align: center;
     font-size: 24px;
     line-height: 32px;
-    border-width: 0px;
+    border-width: 0;
 }
