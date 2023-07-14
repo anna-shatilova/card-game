@@ -23,7 +23,8 @@ const renderApp = () => {
 
     formEl.addEventListener('submit', (event) => {
         if (formEl[0].checked) {
-            appEl.innerHTML = `Страница игры с первым уровнем сложности`
+            appEl.innerHTML = `
+            `
         }
         if (formEl[1].checked) {
             appEl.innerHTML = `Страница игры со вторым уровнем сложности`

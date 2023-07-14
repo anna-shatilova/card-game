@@ -13,6 +13,35 @@ body {
     font-family: StratosSkyeng, sans-serif;
 }
 
+.header {
+    min-height: 155px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 23px;
+    margin-right: 22px;
+}
+
+.timer {
+    width: 155px;
+    height: 91px;
+    color: #fff;
+}
+
+.timer-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 57px;
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.timer-count {
+    font-size: 64px;
+    line-height: 72px;
+}
+
 .container {
     height: 100vh;
     display: flex;
@@ -88,4 +117,19 @@ input[type='radio']:checked + label {
     font-size: 24px;
     line-height: 32px;
     border-width: 0;
+}
+
+.game-field {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+    grid-gap: 15px;
+    margin-bottom: 49px;
+    margin-left: 26px;
+    margin-right: 23px;
+}
+
+.card {
+    width: 95px;
+    height: 133px;
+    border-radius: 4px;
 }
