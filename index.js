@@ -2,7 +2,6 @@ import './style.css'
 import { renderStartPage } from './components/start-page-component.js'
 
 export let gameField = {
-    difficultyLevel: '',
     gameTime: 0,
     cardSuits: ['diamonds', 'hearts', 'clubs', 'spades'],
     cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
@@ -51,4 +50,19 @@ export const getCardRank = (card, rank) => {
     }
 
     return rank
+}
+
+export function getShufflePairs(count) {
+    let pairs = []
+
+    for (let i = 0; i < count; i++) {
+        let cardIndex = Math.floor(Math.random() * gameField.cardDeck.length)
+        let card = gameField.cardDeck[cardIndex]
+
+        pairs.push(card)
+        pairs.push(card)
+
+        gameField.cardDeck.splice(cardIndex, 1)
+    }
+    return pairs.sort(() => Math.random() - 0.5)
 }

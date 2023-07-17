@@ -1,3 +1,4 @@
+import { getShufflePairs } from '../index.js'
 import { renderGame } from './game-component.js'
 
 export const renderStartPage = () => {
@@ -24,17 +25,19 @@ export const renderStartPage = () => {
     const formEl = document.getElementById('form')
 
     formEl.addEventListener('submit', (event) => {
-        // if (formEl[0].checked) {
-        //     appEl.innerHTML = `
-        //     `
-        // }
-        // if (formEl[1].checked) {
-        //     appEl.innerHTML = `Страница игры со вторым уровнем сложности`
-        // }
-        // if (formEl[2].checked) {
-        //     appEl.innerHTML = `Страница игры с третьим уровнем сложности`
-        // }
         event.preventDefault()
-        renderGame()
+
+        if (formEl[0].checked) {
+            renderGame()
+            return getShufflePairs(3)
+        }
+        if (formEl[1].checked) {
+            // renderGame()
+            return getShufflePairs(6)
+        }
+        if (formEl[2].checked) {
+            // renderGame()
+            return getShufflePairs(9)
+        }
     })
 }
