@@ -133,3 +133,45 @@ input[type='radio']:checked + label {
     height: 133px;
     border-radius: 4px;
 }
+
+.card-front {
+    width: inherit;
+    height: inherit;
+    background-color: #fff;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-top {
+    height: 55px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 6px;
+}
+
+.card-top-flipped {
+    rotate: 180deg;
+}
+
+.card-title {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.card-suites {
+    display: flex;
+    justify-content: center;
+}
+
+.card-suites img {
+    width: 29px;
+    height: 25px;
+}
+
+.card-suites-small {
+    width: 7px;
+    height: 6px;
+    margin-left: 3px;
+}

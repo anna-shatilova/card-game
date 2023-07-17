@@ -1,39 +1,54 @@
-const renderApp = () => {
-    const appEl = document.getElementById('app')
-    appEl.innerHTML = `
-      <div class="container">
-      <div class="info">
-          <p class="title">Выбери<br>сложность</p>
-          <form id="form" class="form" >
-                <div class="form-level">
-                    <input type="radio" name="level" value="easy" id="easy-level">
-                    <label for="easy-level" class="form-level-choice">1</label>
-                    <input type="radio" name="level" value="average" id="average-level">
-                    <label for="average-level" class="form-level-choice">2</label>
-                    <input type="radio" name="level" value="difficult" id="difficult-level">
-                    <label for="difficult-level" class="form-level-choice">3</label>
-                </div>
-                <div>
-                    <button type="submit" class="button">Старт</button>
-                </div>
-            </form>
-  </div>
-    `
-    const formEl = document.getElementById('form')
+import './style.css'
+import { renderStartPage } from './components/start-page-component.js'
 
-    formEl.addEventListener('submit', (event) => {
-        if (formEl[0].checked) {
-            appEl.innerHTML = `
-            `
-        }
-        if (formEl[1].checked) {
-            appEl.innerHTML = `Страница игры со вторым уровнем сложности`
-        }
-        if (formEl[2].checked) {
-            appEl.innerHTML = `Страница игры с третьим уровнем сложности`
-        }
-        event.preventDefault()
-    })
+export let gameField = {
+    difficultyLevel: '',
+    gameTime: 0,
+    cardSuits: ['diamonds', 'hearts', 'clubs', 'spades'],
+    cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
+    gameFieldSize: 36,
+    cardDeck: [],
+}
+renderStartPage()
+
+for (let i = 0; i < gameField.gameFieldSize; i++) {
+    gameField.cardDeck[i] = i + 1
 }
 
-renderApp()
+export const getCardSuit = (card, suit) => {
+    if (card > 0 && card <= 9) {
+        suit = gameField.cardSuits[3]
+    } else if (card > 9 && card <= 18) {
+        suit = gameField.cardSuits[1]
+    } else if (card > 18 && card <= 27) {
+        suit = gameField.cardSuits[0]
+    } else {
+        suit = gameField.cardSuits[2]
+    }
+
+    return suit
+}
+
+export const getCardRank = (card, rank) => {
+    if (card === 1 || card === 10 || card === 19 || card === 28) {
+        rank = gameField.cardRanks[8]
+    } else if (card === 2 || card === 11 || card === 20 || card === 29) {
+        rank = gameField.cardRanks[7]
+    } else if (card === 3 || card === 12 || card === 21 || card === 30) {
+        rank = gameField.cardRanks[6]
+    } else if (card === 4 || card === 13 || card === 22 || card === 31) {
+        rank = gameField.cardRanks[5]
+    } else if (card === 5 || card === 14 || card === 23 || card === 32) {
+        rank = gameField.cardRanks[4]
+    } else if (card === 6 || card === 15 || card === 24 || card === 33) {
+        rank = gameField.cardRanks[3]
+    } else if (card === 7 || card === 16 || card === 25 || card === 34) {
+        rank = gameField.cardRanks[2]
+    } else if (card === 8 || card === 17 || card === 26 || card === 35) {
+        rank = gameField.cardRanks[1]
+    } else {
+        rank = gameField.cardRanks[0]
+    }
+
+    return rank
+}
