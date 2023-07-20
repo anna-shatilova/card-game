@@ -8,6 +8,7 @@ export let gameField = {
     cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
     gameFieldSize: 36,
     cardDeck: [],
+    isActive: true,
 }
 renderStartPage()
 
@@ -67,5 +68,10 @@ export function getShufflePairs(count) {
         gameField.cardDeck.splice(cardIndex, 1)
     }
     gameField.cardDeck = pairs.sort(() => Math.random() - 0.5)
-    return renderGame()
+    renderGame()
+
+    return setTimeout(() => {
+        gameField.isActive = false
+        renderGame()
+    }, 5000)
 }

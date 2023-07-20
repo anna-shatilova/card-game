@@ -16,34 +16,35 @@ export const renderGame = () => {
     </header>`
 
     const cardsHtml = gameField.cardDeck
-        .map((card) => {
+        .map((card, index) => {
             let suit = '',
                 rank = ''
 
-            return `<div class="card">
-                <div class="card-front">
-                    <div class="card-top">
-                        <div class="card-title">${getCardRank(card, rank)}</div>
+            return `<div class="card" data-id="${index}">
+            ${
+                gameField.isActive
+                    ? `<div class="card-front">
+                <div class="card-top">
+                    <div class="card-title">${getCardRank(card, rank)}</div>
+                    <img class="card-suites-small" src="./static/${getCardSuit(
+                        card,
+                        suit,
+                    )}.svg" alt="" />
+                </div>
+                <div class="card-suites">
+                    <img src="./static/${getCardSuit(card, suit)}.svg" alt="" />
+                </div>
+                <div class="card-top card-top-flipped">
+                    <div class="card-title">${getCardRank(card, rank)}</div>
                         <img class="card-suites-small" src="./static/${getCardSuit(
                             card,
                             suit,
                         )}.svg" alt="" />
-                    </div>
-                    <div class="card-suites">
-                        <img src="./static/${getCardSuit(
-                            card,
-                            suit,
-                        )}.svg" alt="" />
-                    </div>
-                    <div class="card-top card-top-flipped">
-                        <div class="card-title">${getCardRank(card, rank)}</div>
-                            <img class="card-suites-small" src="./static/${getCardSuit(
-                                card,
-                                suit,
-                            )}.svg" alt="" />
-                    </div>
                 </div>
-                </div>`
+            </div>`
+                    : `<img src="./static/card-back.svg" alt="карта" class="card-back"/>`
+            }
+              </div>`
         })
         .join('')
 
@@ -53,12 +54,25 @@ export const renderGame = () => {
       ${cardsHtml}
       </section>`
 
-    // const cards = document.querySelectorAll('.card')
-    // cards.classList.add('flip')
+    const cards = document.querySelectorAll('.card')
 
-    // setTimeout(() => {
-    //     cards.classList.remove('flip')
-    // }, 5000)
+    for (const card of cards) {
+        card.addEventListener('click', (event) => {
+            event.stopPropagation()
+            const id = card.dataset.id
+            if (!gameField.isActive && id) {
+                gameField.isActive = true
+                renderGame()
+            }
+        })
+    }
+    // let flippedCard = false
+    // let firstCard, secondCard
+    // const flipCard = (e) => {
+    //     const target = e.target.parentElement
+    //     target.classList.add('flip')
+    // }
+    // cards.forEach((card) => {
+    //     card.addEventListener('click', flipCard)
+    // })
 }
-
-// <img src="./static/card-back.svg" alt="карта" class="card-back"/>
