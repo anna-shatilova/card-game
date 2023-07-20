@@ -1,5 +1,4 @@
 import { getShufflePairs } from '../index.js'
-import { renderGame } from './game-component.js'
 
 export const renderStartPage = () => {
     const appEl = document.getElementById('app')
@@ -28,15 +27,12 @@ export const renderStartPage = () => {
         event.preventDefault()
 
         if (formEl[0].checked) {
-            renderGame()
             return getShufflePairs(3)
         }
         if (formEl[1].checked) {
-            // renderGame()
             return getShufflePairs(6)
         }
         if (formEl[2].checked) {
-            // renderGame()
             return getShufflePairs(9)
         }
     })

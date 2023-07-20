@@ -1,5 +1,6 @@
 import './style.css'
 import { renderStartPage } from './components/start-page-component.js'
+import { renderGame } from './components/game-component.js'
 
 export let gameField = {
     gameTime: 0,
@@ -53,6 +54,7 @@ export const getCardRank = (card, rank) => {
 }
 
 export function getShufflePairs(count) {
+    renderGame()
     let pairs = []
 
     for (let i = 0; i < count; i++) {
@@ -64,5 +66,6 @@ export function getShufflePairs(count) {
 
         gameField.cardDeck.splice(cardIndex, 1)
     }
-    return pairs.sort(() => Math.random() - 0.5)
+    gameField.cardDeck = pairs.sort(() => Math.random() - 0.5)
+    return renderGame()
 }

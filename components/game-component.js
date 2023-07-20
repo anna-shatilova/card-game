@@ -1,7 +1,5 @@
 import { gameField, getCardRank, getCardSuit } from '../index.js'
 
-let isGameStart = true
-
 export const renderGame = () => {
     const appEl = document.getElementById('app')
 
@@ -22,8 +20,7 @@ export const renderGame = () => {
             let suit = '',
                 rank = ''
 
-            return isGameStart
-                ? `<div class="card">
+            return `<div class="card">
                 <div class="card-front">
                     <div class="card-top">
                         <div class="card-title">${getCardRank(card, rank)}</div>
@@ -46,9 +43,6 @@ export const renderGame = () => {
                             )}.svg" alt="" />
                     </div>
                 </div>
-            </div>`
-                : `<div class="card">
-                    <img src="./static/card-back.svg" alt="карта" />
                 </div>`
         })
         .join('')
@@ -58,4 +52,13 @@ export const renderGame = () => {
       <section class="game-field">
       ${cardsHtml}
       </section>`
+
+    // const cards = document.querySelectorAll('.card')
+    // cards.classList.add('flip')
+
+    // setTimeout(() => {
+    //     cards.classList.remove('flip')
+    // }, 5000)
 }
+
+// <img src="./static/card-back.svg" alt="карта" class="card-back"/>

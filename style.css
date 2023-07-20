@@ -132,7 +132,21 @@ input[type='radio']:checked + label {
     width: 95px;
     height: 133px;
     border-radius: 4px;
+    /* transform: scale(1);
+    position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d; */
 }
+
+/* .flip {
+    transform: rotateY(180deg);
+} */
+
+/* .card-front,
+.card-back {
+    position: absolute;
+    backface-visibility: hidden;
+} */
 
 .card-front {
     width: inherit;
@@ -142,6 +156,7 @@ input[type='radio']:checked + label {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    /* transform: rotateY(180deg); */
 }
 
 .card-top {
