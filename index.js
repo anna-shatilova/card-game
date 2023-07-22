@@ -71,6 +71,13 @@ export function getShufflePairs(count) {
     renderGame()
 
     return setTimeout(() => {
+        const cardsArray = gameField.cardDeck.map((card) => {
+            return {
+                id: card,
+                isActive: false,
+            }
+        })
+        console.log(cardsArray)
         gameField.isActive = false
         renderGame()
     }, 5000)

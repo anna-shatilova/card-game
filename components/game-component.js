@@ -16,11 +16,11 @@ export const renderGame = () => {
     </header>`
 
     const cardsHtml = gameField.cardDeck
-        .map((card, index) => {
+        .map((card) => {
             let suit = '',
                 rank = ''
 
-            return `<div class="card" data-id="${index}">
+            return `<div class="card" id="card" data-id="${card}">
             ${
                 gameField.isActive
                     ? `<div class="card-front">
@@ -58,12 +58,36 @@ export const renderGame = () => {
 
     for (const card of cards) {
         card.addEventListener('click', (event) => {
+            console.log(gameField)
+            //  = false
+            // let firstCard, secondCard
+
             event.stopPropagation()
-            const id = card.dataset.id
-            if (!gameField.isActive && id) {
-                gameField.isActive = true
-                renderGame()
-            }
+            // console.log(card.dataset.id)
+            // console.log(gameField.cardDeck[card])
+
+            // card['isActive'] = true
+            // renderGame()
+            // const target = event.target.parentElement
+
+            // if (!gameField.cardDeck[card.dataset.index]['isActive']) {
+            //     gameField.cardDeck[card.dataset.index]['isActive'] = true
+            //     firstCard = target
+            // } else {
+            //     gameField.cardDeck[card.dataset.index]['isActive'] = false
+            //     secondCard = target
+            // }
+
+            // const checkForMatch = () => {
+            // if ((firstCard.dataset.id = secondCard.dataset.id)) {
+            //     alert('Вы выиграли!')
+            // } else {
+            //     alert('Вы проиграли')
+            // }
+            // }
+
+            // cards[id].isActive = true
+            // renderGame()
         })
     }
     // let flippedCard = false
