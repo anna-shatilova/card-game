@@ -77,7 +77,7 @@ export function getShufflePairs(count) {
                 isActive: false,
             }
         })
-        console.log(cardsArray)
+        gameField.cardDeck = cardsArray
         gameField.isActive = false
         renderGame()
     }, 5000)

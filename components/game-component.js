@@ -16,11 +16,13 @@ export const renderGame = () => {
     </header>`
 
     const cardsHtml = gameField.cardDeck
-        .map((card) => {
+        .map((card, index) => {
             let suit = '',
                 rank = ''
 
-            return `<div class="card" id="card" data-id="${card}">
+            return `<div class="card" id="card" data-index="${index}" data-id="${
+                gameField.cardDeck[index]['id']
+            }">
             ${
                 gameField.isActive
                     ? `<div class="card-front">
@@ -58,36 +60,31 @@ export const renderGame = () => {
 
     for (const card of cards) {
         card.addEventListener('click', (event) => {
-            console.log(gameField)
-            //  = false
-            // let firstCard, secondCard
+            gameField.cardDeck[card.dataset.index]['isActive'] = false
 
             event.stopPropagation()
-            // console.log(card.dataset.id)
-            // console.log(gameField.cardDeck[card])
 
-            // card['isActive'] = true
-            // renderGame()
-            // const target = event.target.parentElement
+            const target = event.target.parentElement
+            let firstCard, secondCard
 
-            // if (!gameField.cardDeck[card.dataset.index]['isActive']) {
-            //     gameField.cardDeck[card.dataset.index]['isActive'] = true
-            //     firstCard = target
-            // } else {
-            //     gameField.cardDeck[card.dataset.index]['isActive'] = false
-            //     secondCard = target
-            // }
+            if (!gameField.cardDeck[card.dataset.index]['isActive']) {
+                gameField.cardDeck[card.dataset.index]['isActive'] = true
+                renderGame()
+                firstCard = target
+                firstCard = card.dataset.id
+                console.log(firstCard)
+            } else {
+                gameField.cardDeck[card.dataset.index]['isActive'] = false
+                renderGame()
+                secondCard = target
+                secondCard = card.dataset.id
+            }
 
-            // const checkForMatch = () => {
-            // if ((firstCard.dataset.id = secondCard.dataset.id)) {
-            //     alert('Вы выиграли!')
-            // } else {
-            //     alert('Вы проиграли')
-            // }
-            // }
-
-            // cards[id].isActive = true
-            // renderGame()
+            if ((firstCard = secondCard)) {
+                alert('Вы выиграли!')
+            } else {
+                alert('Вы проиграли')
+            }
         })
     }
     // let flippedCard = false
