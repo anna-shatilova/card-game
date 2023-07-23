@@ -24,7 +24,7 @@ export const renderGame = () => {
                 gameField.cardDeck[index]['id']
             }">
             ${
-                gameField.isActive
+                gameField.isActive || gameField.cardDeck[index]['isActive']
                     ? `<div class="card-front">
                 <div class="card-top">
                     <div class="card-title">${getCardRank(card, rank)}</div>
@@ -64,27 +64,28 @@ export const renderGame = () => {
 
             event.stopPropagation()
 
-            const target = event.target.parentElement
-            let firstCard, secondCard
+            // const target = event.target.parentElement
+            // let firstCard, secondCard
 
             if (!gameField.cardDeck[card.dataset.index]['isActive']) {
                 gameField.cardDeck[card.dataset.index]['isActive'] = true
                 renderGame()
-                firstCard = target
-                firstCard = card.dataset.id
-                console.log(firstCard)
-            } else {
-                gameField.cardDeck[card.dataset.index]['isActive'] = false
-                renderGame()
-                secondCard = target
-                secondCard = card.dataset.id
+                //     firstCard = target
+                //     firstCard = card.dataset.id
+                //     console.log(firstCard)
+                // } else {
+                //     gameField.cardDeck[card.dataset.index]['isActive'] = false
+                //     renderGame()
+                //     secondCard = target
+                //     secondCard = card.dataset.id
+                //     console.log(secondCard)
             }
 
-            if ((firstCard = secondCard)) {
-                alert('Вы выиграли!')
-            } else {
-                alert('Вы проиграли')
-            }
+            // if ((firstCard = secondCard)) {
+            //     alert('Вы выиграли!')
+            // } else {
+            //     alert('Вы проиграли')
+            // }
         })
     }
     // let flippedCard = false
