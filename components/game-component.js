@@ -1,5 +1,7 @@
 import { gameField, getCardRank, getCardSuit } from '../index.js'
 
+const compareCards = []
+
 export const renderGame = () => {
     const appEl = document.getElementById('app')
 
@@ -24,7 +26,7 @@ export const renderGame = () => {
                 gameField.cardDeck[index]['id']
             }">
             ${
-                gameField.isActive || gameField.cardDeck[index]['isActive']
+                gameField.isActive
                     ? `<div class="card-front">
                 <div class="card-top">
                     <div class="card-title">${getCardRank(card, rank)}</div>
@@ -60,41 +62,33 @@ export const renderGame = () => {
 
     for (const card of cards) {
         card.addEventListener('click', (event) => {
-            gameField.cardDeck[card.dataset.index]['isActive'] = false
+            const cardItem = gameField.cardDeck[card.dataset.index]
 
             event.stopPropagation()
 
-            // const target = event.target.parentElement
-            // let firstCard, secondCard
-
-            if (!gameField.cardDeck[card.dataset.index]['isActive']) {
-                gameField.cardDeck[card.dataset.index]['isActive'] = true
-                renderGame()
-                //     firstCard = target
-                //     firstCard = card.dataset.id
-                //     console.log(firstCard)
-                // } else {
-                //     gameField.cardDeck[card.dataset.index]['isActive'] = false
-                //     renderGame()
-                //     secondCard = target
-                //     secondCard = card.dataset.id
-                //     console.log(secondCard)
+            if (cardItem.isActive) {
+                return
             }
 
-            // if ((firstCard = secondCard)) {
-            //     alert('Вы выиграли!')
-            // } else {
-            //     alert('Вы проиграли')
-            // }
+            cardItem.isActive = !cardItem.isActive
+            renderGame()
+
+            compareCards.push(cardItem.id)
+
+            // const imgCard = document.querySelectorAll('img')
+            //     imgCard.setAttribute(
+            //         'src',
+            //         `./static/${getCardSuit(card, suit)}.svg`,
+            //     ),
+
+            if (compareCards.length === 2) {
+                if (compareCards[0] === compareCards[1]) {
+                    alert('Вы выиграли!')
+                } else {
+                    alert('Вы проиграли')
+                }
+                compareCards.length = 0
+            }
         })
     }
-    // let flippedCard = false
-    // let firstCard, secondCard
-    // const flipCard = (e) => {
-    //     const target = e.target.parentElement
-    //     target.classList.add('flip')
-    // }
-    // cards.forEach((card) => {
-    //     card.addEventListener('click', flipCard)
-    // })
 }
