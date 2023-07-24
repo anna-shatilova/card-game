@@ -22,31 +22,29 @@ export const renderGame = () => {
             let suit = '',
                 rank = ''
 
+            const cardSuit = getCardSuit(card, suit)
+            const cardRank = getCardRank(card, rank)
+
             return `<div class="card" id="card" data-index="${index}" data-id="${
-                gameField.cardDeck[index]['id']
-            }">
+                card.id
+            }" data-suit="${cardSuit}" data-rank="${cardRank}">
             ${
                 gameField.isActive
                     ? `<div class="card-front">
                 <div class="card-top">
-                    <div class="card-title">${getCardRank(card, rank)}</div>
-                    <img class="card-suites-small" src="./static/${getCardSuit(
-                        card,
-                        suit,
-                    )}.svg" alt="" />
+                    <div class="card-title">${cardRank}</div>
+                    <img class="card-suites-small" src="./static/${cardSuit}.svg" alt="" />
                 </div>
                 <div class="card-suites">
-                    <img src="./static/${getCardSuit(card, suit)}.svg" alt="" />
+                    <img src="./static/${cardSuit}.svg" alt="" />
                 </div>
                 <div class="card-top card-top-flipped">
-                    <div class="card-title">${getCardRank(card, rank)}</div>
-                        <img class="card-suites-small" src="./static/${getCardSuit(
-                            card,
-                            suit,
-                        )}.svg" alt="" />
+                    <div class="card-title">${cardRank}</div>
+                        <img class="card-suites-small" src="./static/${cardSuit}.svg" alt="" />
                 </div>
             </div>`
-                    : `<img src="./static/card-back.svg" alt="карта" class="card-back"/>`
+                    : `
+                    <img src="./static/card-back.svg" alt="карта" class="card-back"/>`
             }
               </div>`
         })
@@ -59,6 +57,7 @@ export const renderGame = () => {
       </section>`
 
     const cards = document.querySelectorAll('.card')
+    console.log(cards)
 
     for (const card of cards) {
         card.addEventListener('click', (event) => {
@@ -71,15 +70,30 @@ export const renderGame = () => {
             }
 
             cardItem.isActive = !cardItem.isActive
-            renderGame()
 
             compareCards.push(cardItem.id)
 
-            // const imgCard = document.querySelectorAll('img')
-            //     imgCard.setAttribute(
-            //         'src',
-            //         `./static/${getCardSuit(card, suit)}.svg`,
-            //     ),
+            const suit = card.dataset.suit
+            const rank = card.dataset.rank
+
+            const renderCardFront = () => {
+                card.innerHTML = `
+                <div class="card-front">
+                    <div class="card-top">
+                        <div class="card-title">${rank}</div>
+                        <img class="card-suites-small" src="./static/${suit}.svg" alt="" />
+                    </div>
+                    <div class="card-suites">
+                        <img src="./static/${suit}.svg" alt="" />
+                    </div>
+                    <div class="card-top card-top-flipped">
+                        <div class="card-title">${rank}</div>
+                        <img class="card-suites-small" src="./static/${suit}.svg" alt="" />
+                    </div>
+                </div>`
+                return
+            }
+            renderCardFront()
 
             if (compareCards.length === 2) {
                 if (compareCards[0] === compareCards[1]) {
