@@ -1,8 +1,13 @@
-import { gameField, getCardRank, getCardSuit } from '../index.js'
+import { gameField } from '../index.js'
+import { renderStartPage } from './start-page-component.js'
 
 const compareCards = []
 
+let cardPairsCompele = 0
+
 export const renderGame = () => {
+    console.log(gameField)
+
     const appEl = document.getElementById('app')
 
     const headerHtml = `
@@ -14,33 +19,29 @@ export const renderGame = () => {
             </div>
             <div class="timer-count">00.00</div>
         </div>
-        <button class="header-button button">Начать заново</button>
+        <button id="new-game-button" class="header-button button">Начать заново</button>
     </header>`
 
     const cardsHtml = gameField.cardDeck
         .map((card, index) => {
-            let suit = '',
-                rank = ''
-
-            const cardSuit = getCardSuit(card, suit)
-            const cardRank = getCardRank(card, rank)
+            console.log('current card is ', card)
 
             return `<div class="card" id="card" data-index="${index}" data-id="${
                 card.id
-            }" data-suit="${cardSuit}" data-rank="${cardRank}">
+            }" data-suit="${card.suit}" data-rank="${card.rank}">
             ${
                 gameField.isActive
                     ? `<div class="card-front">
                 <div class="card-top">
-                    <div class="card-title">${cardRank}</div>
-                    <img class="card-suites-small" src="./static/${cardSuit}.svg" alt="" />
+                    <div class="card-title">${card.rank}</div>
+                    <img class="card-suites-small" src="./static/${card.suit}.svg" alt="" />
                 </div>
                 <div class="card-suites">
-                    <img src="./static/${cardSuit}.svg" alt="" />
+                    <img src="./static/${card.suit}.svg" alt="" />
                 </div>
                 <div class="card-top card-top-flipped">
-                    <div class="card-title">${cardRank}</div>
-                        <img class="card-suites-small" src="./static/${cardSuit}.svg" alt="" />
+                    <div class="card-title">${card.rank}</div>
+                        <img class="card-suites-small" src="./static/${card.suit}.svg" alt="" />
                 </div>
             </div>`
                     : `
@@ -57,15 +58,17 @@ export const renderGame = () => {
       </section>`
 
     const cards = document.querySelectorAll('.card')
-    console.log(cards)
 
     for (const card of cards) {
         card.addEventListener('click', (event) => {
+            console.log(card.dataset.index)
+
             const cardItem = gameField.cardDeck[card.dataset.index]
 
             event.stopPropagation()
 
             if (cardItem.isActive) {
+                console.log('Карта уже перевернута')
                 return
             }
 
@@ -75,6 +78,8 @@ export const renderGame = () => {
 
             const suit = card.dataset.suit
             const rank = card.dataset.rank
+
+            console.log(`rank: ${rank}, suit: ${suit}`)
 
             const renderCardFront = () => {
                 card.innerHTML = `
@@ -97,7 +102,11 @@ export const renderGame = () => {
 
             if (compareCards.length === 2) {
                 if (compareCards[0] === compareCards[1]) {
-                    alert('Вы выиграли!')
+                    cardPairsCompele++
+
+                    if (cardPairsCompele === gameField.difficultLevel) {
+                        alert('Вы выиграли!')
+                    }
                 } else {
                     alert('Вы проиграли')
                 }
@@ -105,4 +114,12 @@ export const renderGame = () => {
             }
         })
     }
+
+    // const newGameButtonEl = document.getElementById('new-game-button')
+
+    // newGameButtonEl.addEventListener('click', (event) => {
+    //     event.stopPropagation()
+
+    //     renderStartPage()
+    // })
 }
