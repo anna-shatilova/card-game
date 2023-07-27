@@ -104,6 +104,7 @@ export function getShufflePairs(count) {
         }
     })
     gameField.cardDeck = cards
+    console.log('gameField.cardDeck', gameField.cardDeck)
 
     renderGame()
 
@@ -111,4 +112,21 @@ export function getShufflePairs(count) {
         gameField.isActive = false
         renderGame()
     }, 5000)
+}
+
+export function resetGame() {
+    gameField = {
+        gameTime: 0,
+        cardSuits: ['diamonds', 'hearts', 'clubs', 'spades'],
+        cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
+        gameFieldSize: 36,
+        cardDeck: [],
+        isActive: true,
+        difficultLevel: 0,
+    }
+
+    renderStartPage()
+    for (let i = 0; i < gameField.gameFieldSize; i++) {
+        gameField.cardDeck[i] = i + 1
+    }
 }

@@ -1,5 +1,4 @@
-import { gameField } from '../index.js'
-import { renderStartPage } from './start-page-component.js'
+import { gameField, resetGame } from '../index.js'
 
 const compareCards = []
 
@@ -109,17 +108,18 @@ export const renderGame = () => {
                     }
                 } else {
                     alert('Вы проиграли')
+                    resetGame()
                 }
                 compareCards.length = 0
             }
         })
     }
 
-    // const newGameButtonEl = document.getElementById('new-game-button')
+    const newGameButtonEl = document.getElementById('new-game-button')
 
-    // newGameButtonEl.addEventListener('click', (event) => {
-    //     event.stopPropagation()
+    newGameButtonEl.addEventListener('click', (event) => {
+        event.stopPropagation()
 
-    //     renderStartPage()
-    // })
+        resetGame()
+    })
 }
