@@ -16,7 +16,7 @@ export const renderGame = () => {
                 <div class="timer-min">min</div>
                 <div class="timer-sec">sek</div>
             </div>
-            <div class="timer-count">00.00</div>
+            <div class="timer-count" >${gameField.gameTime}</div>
         </div>
         <button id="new-game-button" class="header-button button">Начать заново</button>
     </header>`
@@ -115,11 +115,22 @@ export const renderGame = () => {
         })
     }
 
+    // let counter = 0
+    // setInterval(() => {
+    //     counter++
+    //     const minutes = Math.floor(counter / 60)
+    //         .toString()
+    //         .padStart(2, '0')
+    //     const seconds = (counter % 60).toString().padStart(2, '0')
+    //     const timeCount = document.querySelector('.timer-count')
+
+    //     gameField.gameTime = `${minutes}.${seconds}`
+    //     timeCount.textContent = gameField.gameTime
+    // }, 1000)
+
     const newGameButtonEl = document.getElementById('new-game-button')
 
-    newGameButtonEl.addEventListener('click', (event) => {
-        event.stopPropagation()
-
+    newGameButtonEl.addEventListener('click', () => {
         resetGame()
     })
 }

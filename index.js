@@ -3,7 +3,7 @@ import { renderStartPage } from './components/start-page-component.js'
 import { renderGame } from './components/game-component.js'
 
 export let gameField = {
-    gameTime: 0,
+    gameTime: '00.00',
     cardSuits: ['diamonds', 'hearts', 'clubs', 'spades'],
     cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
     gameFieldSize: 36,
@@ -116,7 +116,7 @@ export function getShufflePairs(count) {
 
 export function resetGame() {
     gameField = {
-        gameTime: 0,
+        gameTime: '00.00',
         cardSuits: ['diamonds', 'hearts', 'clubs', 'spades'],
         cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
         gameFieldSize: 36,
