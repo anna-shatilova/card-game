@@ -3,6 +3,7 @@ import { gameField, resetGame } from '../index.js'
 const compareCards = []
 
 let cardPairsCompele = 0
+let counter = 0
 
 export const renderGame = () => {
     console.log(gameField)
@@ -56,6 +57,18 @@ export const renderGame = () => {
       ${cardsHtml}
       </section>`
 
+    const timer = setInterval(() => {
+        counter++
+        const minutes = Math.floor(counter / 60)
+            .toString()
+            .padStart(2, '0')
+        const seconds = (counter % 60).toString().padStart(2, '0')
+        const timeCount = document.querySelector('.timer-count')
+
+        gameField.gameTime = `${minutes}.${seconds}`
+        timeCount.textContent = gameField.gameTime
+    }, 1000)
+
     const cards = document.querySelectorAll('.card')
 
     for (const card of cards) {
@@ -104,10 +117,13 @@ export const renderGame = () => {
                     cardPairsCompele++
 
                     if (cardPairsCompele === gameField.difficultLevel) {
+                        clearInterval(timer)
                         alert('Вы выиграли!')
                     }
                 } else {
+                    clearInterval(timer)
                     alert('Вы проиграли')
+
                     resetGame()
                 }
                 compareCards.length = 0
@@ -115,22 +131,10 @@ export const renderGame = () => {
         })
     }
 
-    // let counter = 0
-    // setInterval(() => {
-    //     counter++
-    //     const minutes = Math.floor(counter / 60)
-    //         .toString()
-    //         .padStart(2, '0')
-    //     const seconds = (counter % 60).toString().padStart(2, '0')
-    //     const timeCount = document.querySelector('.timer-count')
-
-    //     gameField.gameTime = `${minutes}.${seconds}`
-    //     timeCount.textContent = gameField.gameTime
-    // }, 1000)
-
     const newGameButtonEl = document.getElementById('new-game-button')
 
     newGameButtonEl.addEventListener('click', () => {
+        clearInterval(timer)
         resetGame()
     })
 }
