@@ -4,6 +4,7 @@ const compareCards = []
 
 let cardPairsCompele = 0
 let counter = 0
+let timer = null
 
 export const renderGame = () => {
     console.log(gameField)
@@ -57,17 +58,20 @@ export const renderGame = () => {
       ${cardsHtml}
       </section>`
 
-    const timer = setInterval(() => {
-        counter++
-        const minutes = Math.floor(counter / 60)
-            .toString()
-            .padStart(2, '0')
-        const seconds = (counter % 60).toString().padStart(2, '0')
-        const timeCount = document.querySelector('.timer-count')
+    if (!gameField.isActive) {
+        timer = setInterval(() => {
+            counter++
+            const minutes = Math.floor(counter / 60)
+                .toString()
+                .padStart(2, '0')
+            const seconds = (counter % 60).toString().padStart(2, '0')
+            const timeCount = document.querySelector('.timer-count')
 
-        gameField.gameTime = `${minutes}.${seconds}`
-        timeCount.textContent = gameField.gameTime
-    }, 1000)
+            gameField.gameTime = `${minutes}.${seconds}`
+            timeCount.textContent = gameField.gameTime
+        }, 1000)
+        counter = 0
+    }
 
     const cards = document.querySelectorAll('.card')
 
