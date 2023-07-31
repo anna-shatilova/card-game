@@ -10,6 +10,7 @@ export let gameField = {
     cardDeck: [],
     isActive: true,
     difficultLevel: 0,
+    status: '',
 }
 renderStartPage()
 
@@ -123,6 +124,7 @@ export function resetGame() {
         cardDeck: [],
         isActive: true,
         difficultLevel: 0,
+        status: '',
     }
 
     renderStartPage()

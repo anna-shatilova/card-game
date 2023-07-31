@@ -1,15 +1,15 @@
 import { gameField, resetGame } from '../index.js'
+import { renderResultModule } from './result-component.js'
 
 const compareCards = []
 
 let cardPairsCompele = 0
 let counter = 0
 let timer = null
+export const appEl = document.getElementById('app')
 
 export const renderGame = () => {
     console.log(gameField)
-
-    const appEl = document.getElementById('app')
 
     const headerHtml = `
     <header class="header">
@@ -122,13 +122,13 @@ export const renderGame = () => {
 
                     if (cardPairsCompele === gameField.difficultLevel) {
                         clearInterval(timer)
-                        alert('Вы выиграли!')
+                        gameField.status = 'won'
+                        renderResultModule()
                     }
                 } else {
                     clearInterval(timer)
-                    alert('Вы проиграли')
-
-                    resetGame()
+                    gameField.status = 'lost'
+                    renderResultModule()
                 }
                 compareCards.length = 0
             }

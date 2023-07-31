@@ -63,6 +63,10 @@ body {
     padding-right: 70px;
 }
 
+.info-img {
+    margin-top: 28px;
+}
+
 .title {
     text-align: center;
     color: #004980;
@@ -178,4 +182,42 @@ input[type='radio']:checked + label {
     width: 7px;
     height: 6px;
     margin-left: 3px;
+}
+
+.result-title {
+    margin-top: 8px;
+    margin-bottom: 28px;
+}
+
+.result-title-time {
+    font-size: 24px;
+    line-height: 32px;
+    margin: 0 0 10px;
+}
+
+.result-count {
+    color: #000;
+}
+
+.result-go-button {
+    margin-top: 38px;
+    margin-bottom: 50px;
+}
+
+dialog {
+    width: 480px;
+    height: 459px;
+    border-radius: 12px;
+    background: #c2f5ff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: none;
+}
+
+dialog::backdrop {
+    opacity: 0.9;
+    background: #004980;
 }
