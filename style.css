@@ -218,6 +218,5 @@ dialog {
 }
 
 dialog::backdrop {
-    opacity: 0.9;
-    background: #004980;
+    background-color: rgb(0 73 128 / 90%);
 }

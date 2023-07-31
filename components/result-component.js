@@ -1,8 +1,10 @@
 import { gameField, resetGame } from '../index.js'
-import { appEl } from './game-component.js'
 
 export const renderResultModule = () => {
-    appEl.innerHTML = `
+    const moduleResultEl = document.getElementById('module')
+    moduleResultEl.style.display = 'flex'
+
+    moduleResultEl.innerHTML = `
       <dialog>
         <img class="info-img" src="./static/${
             gameField.status === 'won' ? 'celebration' : 'dead'
@@ -27,6 +29,7 @@ export const renderResultModule = () => {
     const newGameButton = document.querySelector('.result-go-button')
 
     newGameButton.addEventListener('click', () => {
+        moduleResultEl.style.display = 'none'
         resultDialog.close()
         resetGame()
     })

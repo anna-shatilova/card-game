@@ -6,7 +6,6 @@ const compareCards = []
 let cardPairsCompele = 0
 let counter = 0
 let timer = null
-export const appEl = document.getElementById('app')
 
 export const renderGame = () => {
     console.log(gameField)
@@ -51,6 +50,8 @@ export const renderGame = () => {
               </div>`
         })
         .join('')
+
+    const appEl = document.getElementById('app')
 
     appEl.innerHTML = `
       ${headerHtml}
