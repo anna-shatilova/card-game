@@ -1,11 +1,11 @@
-import { gameField, resetGame } from '../index.js'
-import { renderResultModule } from './result-component.js'
+import { gameField, resetGame } from '../index'
+import { renderResultModule } from './result-component'
 
-const compareCards = []
+const compareCards: number[] = []
 
 let cardPairsCompele = 0
 let counter = 0
-let timer = null
+let timer: any = null
 
 export const renderGame = () => {
     console.log(gameField)
@@ -51,7 +51,7 @@ export const renderGame = () => {
         })
         .join('')
 
-    const appEl = document.getElementById('app')
+    const appEl = document.getElementById('app') as HTMLElement
 
     appEl.innerHTML = `
       ${headerHtml}
@@ -66,7 +66,9 @@ export const renderGame = () => {
                 .toString()
                 .padStart(2, '0')
             const seconds = (counter % 60).toString().padStart(2, '0')
-            const timeCount = document.querySelector('.timer-count')
+            const timeCount = document.querySelector(
+                '.timer-count',
+            ) as HTMLElement
 
             gameField.gameTime = `${minutes}.${seconds}`
             timeCount.textContent = gameField.gameTime
@@ -74,10 +76,10 @@ export const renderGame = () => {
         counter = 0
     }
 
-    const cards = document.querySelectorAll('.card')
+    const cards: any = document.querySelectorAll('.card')
 
     for (const card of cards) {
-        card.addEventListener('click', (event) => {
+        card.addEventListener('click', (event: MouseEvent) => {
             console.log(card.dataset.index)
 
             const cardItem = gameField.cardDeck[card.dataset.index]
@@ -136,7 +138,9 @@ export const renderGame = () => {
         })
     }
 
-    const newGameButtonEl = document.getElementById('new-game-button')
+    const newGameButtonEl = document.getElementById(
+        'new-game-button',
+    ) as HTMLElement
 
     newGameButtonEl.addEventListener('click', () => {
         clearInterval(timer)

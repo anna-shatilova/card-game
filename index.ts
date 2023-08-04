@@ -1,8 +1,19 @@
 import './style.css'
-import { renderStartPage } from './components/start-page-component.js'
-import { renderGame } from './components/game-component.js'
+import { renderStartPage } from './components/start-page-component'
+import { renderGame } from './components/game-component'
 
-export let gameField = {
+type GameField = {
+    gameTime: string
+    cardSuits: string[]
+    cardRanks: string[]
+    gameFieldSize: number
+    cardDeck: any[]
+    isActive: boolean
+    difficultLevel: number
+    status: string
+}
+
+export let gameField: GameField = {
     gameTime: '00.00',
     cardSuits: ['diamonds', 'hearts', 'clubs', 'spades'],
     cardRanks: ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
@@ -18,7 +29,7 @@ for (let i = 0; i < gameField.gameFieldSize; i++) {
     gameField.cardDeck[i] = i + 1
 }
 
-export const getCardSuit = (card) => {
+export const getCardSuit = (card: number) => {
     if (card > 0 && card <= 9) {
         const suit = gameField.cardSuits[3]
         return suit
@@ -38,7 +49,7 @@ export const getCardSuit = (card) => {
     return suit
 }
 
-export const getCardRank = (card) => {
+export const getCardRank = (card: number) => {
     if (card === 1 || card === 10 || card === 19 || card === 28) {
         const rank = gameField.cardRanks[8]
         return rank
@@ -77,7 +88,7 @@ export const getCardRank = (card) => {
     return rank
 }
 
-export function getShufflePairs(count) {
+export function getShufflePairs(count: number) {
     gameField.difficultLevel = count
 
     let pairs = []

@@ -1,7 +1,7 @@
-import { getShufflePairs } from '../index.js'
+import { getShufflePairs } from '../index'
 
 export const renderStartPage = () => {
-    const appEl = document.getElementById('app')
+    const appEl = document.getElementById('app') as HTMLElement
     appEl.innerHTML = `
       <div class="container">
       <div class="info">
@@ -21,9 +21,9 @@ export const renderStartPage = () => {
             </form>
   </div>
     `
-    const formEl = document.getElementById('form')
+    const formEl: any = document.getElementById('form')
 
-    formEl.addEventListener('submit', (event) => {
+    formEl.addEventListener('submit', (event: MouseEvent) => {
         event.preventDefault()
 
         if (formEl[0].checked) {

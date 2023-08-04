@@ -1,7 +1,7 @@
-import { gameField, resetGame } from '../index.js'
+import { gameField, resetGame } from '../index'
 
 export const renderResultModule = () => {
-    const moduleResultEl = document.getElementById('module')
+    const moduleResultEl = document.getElementById('module') as HTMLElement
     moduleResultEl.style.display = 'flex'
 
     moduleResultEl.innerHTML = `
@@ -23,10 +23,12 @@ export const renderResultModule = () => {
         </div>
       </dialog>`
 
-    const resultDialog = document.querySelector('dialog')
+    const resultDialog: any = document.querySelector('dialog')
     resultDialog.showModal()
 
-    const newGameButton = document.querySelector('.result-go-button')
+    const newGameButton = document.querySelector(
+        '.result-go-button',
+    ) as HTMLElement
 
     newGameButton.addEventListener('click', () => {
         moduleResultEl.style.display = 'none'
