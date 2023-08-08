@@ -53,11 +53,13 @@ export const renderGame = () => {
 
     const appEl = document.getElementById('app') as HTMLElement
 
-    appEl.innerHTML = `
+    if (appEl) {
+        appEl.innerHTML = `
       ${headerHtml}
       <section class="game-field">
       ${cardsHtml}
       </section>`
+    }
 
     if (!gameField.isActive) {
         timer = setInterval(() => {
@@ -142,8 +144,10 @@ export const renderGame = () => {
         'new-game-button',
     ) as HTMLElement
 
-    newGameButtonEl.addEventListener('click', () => {
-        clearInterval(timer)
-        resetGame()
-    })
+    if (newGameButtonEl) {
+        newGameButtonEl.addEventListener('click', () => {
+            clearInterval(timer)
+            resetGame()
+        })
+    }
 }

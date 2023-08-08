@@ -2,7 +2,8 @@ import { getShufflePairs } from '../components/function-for-test'
 
 export const renderStartPage = () => {
     const appEl = document.getElementById('app') as HTMLElement
-    appEl.innerHTML = `
+    if (appEl) {
+        appEl.innerHTML = `
       <div class="container">
       <div class="info">
           <p class="title">Выбери<br>сложность</p>
@@ -21,19 +22,22 @@ export const renderStartPage = () => {
             </form>
   </div>
     `
+    }
     const formEl: any = document.getElementById('form')
 
-    formEl.addEventListener('submit', (event: MouseEvent) => {
-        event.preventDefault()
+    if (formEl) {
+        formEl.addEventListener('submit', (event: MouseEvent) => {
+            event.preventDefault()
 
-        if (formEl[0].checked) {
-            return getShufflePairs(3)
-        }
-        if (formEl[1].checked) {
-            return getShufflePairs(6)
-        }
-        if (formEl[2].checked) {
-            return getShufflePairs(9)
-        }
-    })
+            if (formEl[0].checked) {
+                return getShufflePairs(3)
+            }
+            if (formEl[1].checked) {
+                return getShufflePairs(6)
+            }
+            if (formEl[2].checked) {
+                return getShufflePairs(9)
+            }
+        })
+    }
 }
