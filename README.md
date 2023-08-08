@@ -4,4 +4,4 @@
 
 ## Ссылка на приложение:
 
-https://annadancelife.github.io/webdev-cw-instapro/
+https://annadancelife.github.io/card-game/
