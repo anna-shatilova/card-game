@@ -1,6 +1,5 @@
 import './style.css'
 import { renderStartPage } from './components/start-page-component'
-import { renderGame } from './components/game-component'
 
 type GameField = {
     gameTime: string
@@ -23,31 +22,13 @@ export let gameField: GameField = {
     difficultLevel: 0,
     status: '',
 }
+
 renderStartPage()
 
 for (let i = 0; i < gameField.gameFieldSize; i++) {
     gameField.cardDeck[i] = i + 1
 }
 
-export const getCardSuit = (card: number) => {
-    if (card > 0 && card <= 9) {
-        const suit = gameField.cardSuits[3]
-        return suit
-    }
-
-    if (card > 9 && card <= 18) {
-        const suit = gameField.cardSuits[1]
-        return suit
-    }
-
-    if (card > 18 && card <= 27) {
-        const suit = gameField.cardSuits[0]
-        return suit
-    }
-
-    const suit = gameField.cardSuits[2]
-    return suit
-}
 
 export const getCardRank = (card: number) => {
     if (card === 1 || card === 10 || card === 19 || card === 28) {
@@ -86,44 +67,6 @@ export const getCardRank = (card: number) => {
 
     const rank = gameField.cardRanks[0]
     return rank
-}
-
-export function getShufflePairs(count: number) {
-    gameField.difficultLevel = count
-
-    let pairs = []
-
-    for (let i = 0; i < count; i++) {
-        let cardIndex = Math.floor(Math.random() * gameField.cardDeck.length)
-        let card = gameField.cardDeck[cardIndex]
-
-        pairs.push(card)
-        pairs.push(card)
-
-        gameField.cardDeck.splice(cardIndex, 1)
-    }
-    const shuffledIds = pairs.sort(() => Math.random() - 0.5)
-
-    const cards = shuffledIds.map((item) => {
-        const cardSuit = getCardSuit(item)
-        const cardRank = getCardRank(item)
-
-        return {
-            id: item,
-            rank: cardRank,
-            suit: cardSuit,
-            isActive: false,
-        }
-    })
-    gameField.cardDeck = cards
-    console.log('gameField.cardDeck', gameField.cardDeck)
-
-    renderGame()
-
-    return setTimeout(() => {
-        gameField.isActive = false
-        renderGame()
-    }, 5000)
 }
 
 export function resetGame() {

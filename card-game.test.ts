@@ -1,5 +1,5 @@
 import { it, expect, describe } from '@jest/globals'
-import { getCardSuit, getShufflePairs } from './index'
+import { getCardSuit, getShufflePairs } from './components/function-for-test'
 
 describe('cardGame', () => {
     it('should add suit to card', () => {

@@ -1,4 +1,4 @@
-import { getShufflePairs } from '../index'
+import { getShufflePairs } from '../components/function-for-test'
 
 export const renderStartPage = () => {
     const appEl = document.getElementById('app') as HTMLElement
