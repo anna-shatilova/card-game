@@ -5,7 +5,7 @@ const compareCards: number[] = []
 
 let cardPairsCompele = 0
 let counter = 0
-let timer: any = null
+let timer: NodeJS.Timer
 
 export const renderGame = () => {
     console.log(gameField)
