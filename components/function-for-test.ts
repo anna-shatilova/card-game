@@ -48,6 +48,7 @@ export function getShufflePairs(count: number) {
             isActive: false,
         }
     })
+    
     gameField.cardDeck = cards
     console.log('gameField.cardDeck', gameField.cardDeck)
 
