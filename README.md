@@ -4,4 +4,4 @@
 
 ## Ссылка на приложение:
 
-https://annadancelife.github.io/card-game/
+https://anna-shatilova.github.io/card-game/
